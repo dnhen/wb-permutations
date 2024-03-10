@@ -22,71 +22,72 @@ generateButton.addEventListener('click', () => {
   const formattedWeightList = weightList.split('\n').map((val) => parseInt(val, 10));
   console.log('Actual target:', actualTargetWeight);
 
-  const closestValuesTrie = generatePermutationsTrie(actualTargetWeight, formattedWeightList);
-  const closestValuesTuple = generatePermutationsTuple(actualTargetWeight, formattedWeightList);
+  const generatedPermutations = generatePermutations(formattedWeightList, actualTargetWeight);
+  console.log(generatedPermutations);
 
   const resultsThree = document.querySelector('#results_three');
   const resultsTwo = document.querySelector('#results_two');
 
-  resultsThree.children[1].innerText = 'Total Weight: ' + closestValuesTrie.sum + ' kg';
-  resultsTwo.children[1].innerText = 'Total Weight: ' + closestValuesTuple.sum + ' kg';
+  resultsThree.children[1].innerText = 'Total Weight: ' + generatedPermutations.two.sum + ' kg';
+  resultsTwo.children[1].innerText = 'Total Weight: ' + generatedPermutations.three.sum + ' kg';
 
-  setWeightText(resultsThree.children[2], closestValuesTrie.values[0]);
-  setWeightText(resultsThree.children[3], closestValuesTrie.values[1]);
-  setWeightText(resultsThree.children[4], closestValuesTrie.values[2]);
+  setWeightText(resultsThree.children[2], generatedPermutations.three.values[0]);
+  setWeightText(resultsThree.children[3], generatedPermutations.three.values[1]);
+  setWeightText(resultsThree.children[4], generatedPermutations.three.values[2]);
 
-  setWeightText(resultsTwo.children[2], closestValuesTuple.values[0]);
-  setWeightText(resultsTwo.children[3], closestValuesTuple.values[1]);
+  setWeightText(resultsTwo.children[2], generatedPermutations.two.values[0]);
+  setWeightText(resultsTwo.children[3], generatedPermutations.two.values[1]);
 });
 
-const generatePermutationsTrie = (targetWeight, weightList) => {
+const generatePermutations = (weightList, targetWeight) => {
   // To store the closest sum and values
-  let closestSum = Number.MAX_VALUE;
-  let closestValues = [undefined, undefined, undefined];
+  const output = {
+    one: {
+      sum: Number.MAX_VALUE,
+      values: [undefined],
+    },
+    two: {
+      sum: Number.MAX_VALUE,
+      values: [undefined, undefined],
+    },
+    three: {
+      sum: Number.MAX_VALUE,
+      values: [undefined, undefined, undefined],
+    },
+  };
 
   // Run three nested loops each loop for each element of trie
   for (let a = 0; a < weightList.length; a++) {
-    for (let b = a + 1; b < weightList.length; b++) {
-      for (let c = b + 1; c < weightList.length; c++) {
-        const currDiff = Math.abs(targetWeight - closestSum);
-        const newDiff = Math.abs(targetWeight - (weightList[a] + weightList[b] + weightList[c]));
+    const currDiffOne = Math.abs(targetWeight - output.one.sum);
+    const newDiffOne = Math.abs(targetWeight - weightList[a]);
 
-        if (currDiff > newDiff && weightList[a] + weightList[b] + weightList[c] <= targetWeight) {
-          closestSum = weightList[a] + weightList[b] + weightList[c];
-          closestValues = [weightList[a], weightList[b], weightList[c]];
+    if (currDiffOne > newDiffOne && weightList[a] <= targetWeight) {
+      output.one.sum = weightList[a];
+      output.one.values = [weightList[a]];
+    }
+
+    for (let b = a + 1; b < weightList.length; b++) {
+      const currDiffTwo = Math.abs(targetWeight - output.two.sum);
+      const newDiffTwo = Math.abs(targetWeight - weightList[a] - weightList[b]);
+
+      if (currDiffTwo > newDiffTwo && weightList[a] + weightList[b] <= targetWeight) {
+        output.two.sum = weightList[a] + weightList[b];
+        output.two.values = [weightList[a], weightList[b]];
+      }
+
+      for (let c = b + 1; c < weightList.length; c++) {
+        const currDiffThree = Math.abs(targetWeight - output.three.sum);
+        const newDiffThree = Math.abs(targetWeight - (weightList[a] + weightList[b] + weightList[c]));
+
+        if (currDiffThree > newDiffThree && weightList[a] + weightList[b] + weightList[c] <= targetWeight) {
+          output.three.sum = weightList[a] + weightList[b] + weightList[c];
+          output.three.values = [weightList[a], weightList[b], weightList[c]];
         }
       }
     }
   }
 
-  return {
-    sum: closestValues[0] === undefined ? -1 : closestSum,
-    values: closestValues,
-  };
-};
-
-const generatePermutationsTuple = (targetWeight, weightList) => {
-  // To store the closest sum and values
-  let closestSum = Number.MAX_VALUE;
-  let closestValues = [undefined, undefined, undefined];
-
-  // Run two nested loops each loop for each element of tuple
-  for (let a = 0; a < weightList.length; a++) {
-    for (let b = a + 1; b < weightList.length; b++) {
-      const currDiff = Math.abs(targetWeight - closestSum);
-      const newDiff = Math.abs(targetWeight - weightList[a] - weightList[b]);
-
-      if (currDiff > newDiff) {
-        closestSum = weightList[a] + weightList[b];
-        closestValues = [weightList[a], weightList[b], undefined];
-      }
-    }
-  }
-
-  return {
-    sum: closestValues[0] === undefined ? -1 : closestSum,
-    values: closestValues,
-  };
+  return output;
 };
 
 const setWeightText = (element, value) => {

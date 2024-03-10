@@ -29,3 +29,15 @@ form {
 .form_input > textarea {
   height: 300px;
 }
+
+#results {
+  display: flex;
+  justify-content: space-between;
+}
+
+#results > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}

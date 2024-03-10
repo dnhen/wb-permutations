@@ -25,8 +25,18 @@ generateButton.addEventListener('click', () => {
   const closestValuesTrie = generatePermutationsTrie(actualTargetWeight, formattedWeightList);
   const closestValuesTuple = generatePermutationsTuple(actualTargetWeight, formattedWeightList);
 
-  console.log(closestValuesTrie);
-  console.log(closestValuesTuple);
+  const resultsThree = document.querySelector('#results_three');
+  const resultsTwo = document.querySelector('#results_two');
+
+  resultsThree.children[1].innerText = 'Total Weight: ' + closestValuesTrie.sum + ' kg';
+  resultsTwo.children[1].innerText = 'Total Weight: ' + closestValuesTuple.sum + ' kg';
+
+  setWeightText(resultsThree.children[2], closestValuesTrie.values[0]);
+  setWeightText(resultsThree.children[3], closestValuesTrie.values[1]);
+  setWeightText(resultsThree.children[4], closestValuesTrie.values[2]);
+
+  setWeightText(resultsTwo.children[2], closestValuesTuple.values[0]);
+  setWeightText(resultsTwo.children[3], closestValuesTuple.values[1]);
 });
 
 const generatePermutationsTrie = (targetWeight, weightList) => {
@@ -77,6 +87,10 @@ const generatePermutationsTuple = (targetWeight, weightList) => {
     sum: closestValues[0] === undefined ? -1 : closestSum,
     values: closestValues,
   };
+};
+
+const setWeightText = (element, value) => {
+  element.innerText = value === undefined ? 'n/a' : value + ' kg';
 };
 
 // Initial loading of data when page loads

@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html,
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+  box-sizing: border-box;
+  color: #1a1a1a;
+}
+
+body {
+  background-color: #2e4b5d;
+}
+
+/* Layout Styles */
+
+#container {
+  background-color: #f3f3f3;
+  border-radius: 4px;
+  margin: 40px 16vw;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+hr {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  height: 1px;
+  background: #91a1aa;
+}
+
+/* Generic Input Styles */
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f3f3f3;
+  font-size: 18px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f3f3f3;
+  font-size: 14px;
+  height: 100px;
+}
+
+/* Element Styles */
+
+.colorBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #bccfdb;
+  border-radius: 4px;
+  gap: 8px;
+}
+
+.colorBox > p {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.calculateButton {
+  width: 100%;
+  background-color: #2e4b5d;
+  color: #f3f3f3;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.calculateButton:hover {
+  background-color: #426a83;
+}
+
+.passengerBox {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #f3f3f3;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.totalWeight {
+  margin-top: 4px;
+  width: 100%;
+  text-align: left;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.removeButton {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #640404;
+  color: #f3f3f3;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background-color: #c90a0a;
+}
+
+/* Input Icons */
+
+#startingWeight {
+  padding-left: 42px;
+  background: #f3f3f3 url(https://www.iconarchive.com/download/i103128/unclebob/spanish-travel/plane.1024.png) no-repeat
+    10px 14px;
+  background-size: 22px;
+}
+
+#targetWeight {
+  padding-left: 42px;
+  background: #f3f3f3 url(https://uxwing.com/wp-content/themes/uxwing/download/seo-marketing/target-icon.png) no-repeat
+    10px 14px;
+  background-size: 22px;
+}
+
+#pilotWeight {
+  padding-left: 42px;
+  background: #f3f3f3 url(https://cdn-icons-png.freepik.com/256/1077/1077063.png) no-repeat 10px 14px;
+  background-size: 22px;
+}

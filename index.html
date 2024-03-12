@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <title>N-Permutations</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <title>n-permutations</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>N-Permutations</h1>
-    <hr />
-    <form>
-      <div class="form_input">
-        <label for="starting_weight">Starting Weight (kg):</label>
-        <input type="number" id="starting_weight" name="starting_weight" placeholder="900" />
+    <div id="container">
+      <h1>n-permutations</h1>
+      <hr />
+      <div class="form">
+        <div class="colorBox">
+          <p>Starting Weight (kg)</p>
+          <input type="number" id="startingWeight" />
+        </div>
+        <div class="colorBox">
+          <p>Target Weight (kg)</p>
+          <input type="number" id="targetWeight" />
+        </div>
+        <div class="colorBox">
+          <p>Pilot Weight (kg)</p>
+          <input type="number" id="pilotWeight" />
+        </div>
       </div>
-      <div class="form_input">
-        <label for="target_weight">Target Weight (kg):</label>
-        <input type="number" id="target_weight" name="target_weight" placeholder="1200" />
+      <div class="form">
+        <div class="colorBox">
+          <p>Weights (kg)</p>
+          <textarea id="weights"></textarea>
+        </div>
       </div>
-      <div class="form_input">
-        <label for="pilot_weight">Pilot Weight (kg):</label>
-        <input type="number " id="pilot_weight" name="pilot_weight" placeholder="75" />
-      </div>
-      <div class="form_input">
-        <label for="weight_list">Weight List (kg):</label>
-        <textarea id="weight_list" name="weight_list" placeholder="123"></textarea>
-      </div>
-    </form>
-    <button id="generate_button">Generate</button>
-    <hr />
-    <div id="results">
-      <div id="results_three">
-        <h2>Three Passengers</h2>
-        <p>Total Weight: n/a</p>
-        <p>n/a</p>
-        <p>n/a</p>
-        <p>n/a</p>
-      </div>
-      <div id="results_two">
-        <h2>Two Passengers</h2>
-        <p>Total Weight: n/a</p>
-        <p>n/a</p>
-        <p>n/a</p>
-        <p>n/a</p>
+      <div class="calculateButton">Calculate Permutations</div>
+      <hr />
+      <div class="form">
+        <div class="colorBox">
+          <p>1 Passenger</p>
+          <div class="passengerBox">123 kg</div>
+          <div class="passengerBox">n/a</div>
+          <div class="passengerBox">n/a</div>
+          <p class="totalWeight">Total Weight: 123 kg</p>
+          <div class="removeButton">Remove Weights From List</div>
+        </div>
+        <div class="colorBox">
+          <p>2 Passengers</p>
+          <div class="passengerBox">123 kg</div>
+          <div class="passengerBox">123 kg</div>
+          <div class="passengerBox">n/a</div>
+          <p class="totalWeight">Total Weight: 123 kg</p>
+          <div class="removeButton">Remove Weights From List</div>
+        </div>
+        <div class="colorBox">
+          <p>3 Passengers</p>
+          <div class="passengerBox">123 kg</div>
+          <div class="passengerBox">123 kg</div>
+          <div class="passengerBox">123 kg</div>
+          <p class="totalWeight">Total Weight: 123 kg</p>
+          <div class="removeButton">Remove Weights From List</div>
+        </div>
       </div>
     </div>
-    <script src="./scripts.js"></script>
+    <script src="./script.js" type="module"></script>
   </body>
 </html>

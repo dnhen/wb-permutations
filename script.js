@@ -1,4 +1,5 @@
 import { generatePermutations } from './scripts/generatePermutations.js';
+import { notify } from './scripts/notify.js';
 
 // --------------------------------------
 // Global Variables
@@ -135,6 +136,9 @@ const copyValues = (noOfPax) => {
 
   // Save the text to the clipboard
   navigator.clipboard.writeText(formattedValues);
+
+  // Notify
+  notify('Weights copied!', 'You have copied all the weights (including the pilot).');
 };
 
 // Remove the values from the weights form input
@@ -172,6 +176,9 @@ const handleRemoveWeights = (noOfPax) => {
 
   // Set the form to have the new weight list
   setFormValues(swFormVal, twFormVal, pwFormVal, formattedWeightList);
+
+  // Notify
+  notify('Weights removed!', 'You have removed the weights from the weights list.');
 };
 
 // --------------------------------------

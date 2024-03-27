@@ -154,3 +154,37 @@ textarea {
   background: #f3f3f3 url(https://cdn-icons-png.freepik.com/256/1077/1077063.png) no-repeat 10px 14px;
   background-size: 22px;
 }
+
+/* Notify */
+
+.notify {
+  background-color: #021724;
+  width: 25vw;
+  padding: 10px;
+  padding-right: 18px;
+  border-radius: 4px;
+  border: 2px solid #bccfdb;
+  border-right: 8px solid #bccfdb;
+  text-align: right;
+  position: absolute;
+  z-index: 1023;
+  top: 25px;
+  right: 25px;
+  transform: translateY(-160%);
+  transition: transform 0.8s;
+}
+
+.notify.show {
+  transform: translateY(0%);
+}
+
+.notify > .title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f3f3f3;
+}
+
+.notify > .description {
+  font-size: 0.8rem;
+  color: #f3f3f3;
+}

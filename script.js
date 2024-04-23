@@ -94,8 +94,13 @@ const handleCalculateWeights = () => {
   // Format the weight list into an array of integers
   const formattedW = wFormVal.split('\n').map((val) => parseInt(val, 10));
 
+  // Convert the form weights to ints
+  const swInt = parseInt(swFormVal);
+  const twInt = parseInt(twFormVal);
+  const pwInt = parseInt(pwFormVal);
+
   // Calculate the actual target weight we are trying to reach from our weight list
-  const actualTw = parseInt(twFormVal) - parseInt(swFormVal) - parseInt(pwFormVal);
+  const actualTw = twInt - swInt - pwInt;
 
   // Generate all permutations given the weights
   const genPermus = generatePermutations(formattedW, actualTw);
